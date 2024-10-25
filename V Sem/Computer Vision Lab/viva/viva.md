@@ -7,18 +7,14 @@
 
 ### 2. **Key Techniques Explained**
    - **Histogram of Oriented Gradients (HOG):**
-     - **Procedure:** Divide the image into small regions (cells), for each cell compute a histogram of gradient directions or edge orientations.
+     - **Procedure:** Divide the image into small regions (cells), for each cell compute a histogram of gradient directions or edge orientations using `cv2.calcHist`.
      - **Application:** Widely used for object detection, particularly for pedestrian detection in computer vision.
    - **Scale-Invariant Feature Transform (SIFT):**
      - **Steps:**
-       - Detect potential interest points that are invariant to scale and orientation.
-       - Localize keypoints to sub-pixel accuracy and filter out low contrast points.
-       - Assign orientation based on local image gradient.
-       - Generate a descriptor that is robust to local geometric and photometric transformations.
+       - Detect potential interest points using `cv2.SIFT_create`.
+       - Localize keypoints and generate descriptors with `cv2.SIFT.detectAndCompute`.
      - **Application:** Feature matching across different images, object recognition, 3D reconstruction.
-   - **Local Binary Pattern (LBP):**
-     - **Procedure:** For each pixel in the image, compare it with its neighbors and assign a binary code.
-     - **Application:** Texture classification, face recognition, and other applications where illumination variations are a concern.
+   - **Local Binary Pattern (LBP):** Not directly supported in OpenCV, but can be implemented using `cv2.threshold` and custom routines.
 
 ### 3. **Practical Exercises**
    - **Implementing and Visualizing HOG for Object Detection**
@@ -32,13 +28,13 @@
 
 ### 2. **Advanced Matching Techniques**
    - **Brute-Force Matcher:**
-     - **Description:** Compares each descriptor in the first set with all descriptors in the second set and finds the closest one.
+     - **Description:** Uses `cv2.BFMatcher` to compare each descriptor in the first set with all descriptors in the second set and finds the closest one.
      - **Use Case:** Best for small datasets where precision is more critical than speed.
    - **FLANN Matcher:**
-     - **Description:** Utilizes optimized algorithms to find good matches quickly, suitable for large datasets.
+     - **Description:** Utilizes `cv2.FlannBasedMatcher` with optimized algorithms to find good matches quickly.
      - **Use Case:** Feature matching in real-time applications.
    - **RANSAC:**
-     - **Process:** Randomly select data points to estimate a model and classify all points based on their fit to the model, iterating this process to maximize the number of inliers.
+     - **Process:** Often used with `cv2.findHomography` to robustly estimate a homography matrix that aligns matched features.
      - **Use Case:** Robust estimation problems such as camera calibration and 3D reconstruction.
 
 ### 3. **Lab Exercises**
@@ -54,10 +50,9 @@
 ### 2. **Techniques for Calibration**
    - **Pinhole Camera Model:**
      - **Description:** Assumes a simple geometric model where light passes through a single point (pinhole).
-     - **Role:** Foundation for understanding more complex camera models and for initial estimations in calibration algorithms.
    - **Calibration Process:**
-     - **Procedure:** Use multiple images of a known calibration pattern (checkerboard), compute the homography, and solve for the camera parameters.
-     - **Output:** Optimized camera matrix, distortion coefficients, rotation and translation vectors.
+     - **Procedure:** Use multiple images of a known calibration pattern (checkerboard), and use `cv2.calibrateCamera` to compute the camera parameters.
+     - **Output:** Optimized camera matrix, distortion coefficients, rotation and translation vectors using `cv2.calibrateCamera`.
 
 ### 3. **Exercises and Applications**
    - **Estimating and Validating Camera Parameters**

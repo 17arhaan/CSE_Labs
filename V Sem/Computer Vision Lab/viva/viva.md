@@ -1,6 +1,5 @@
-# Computer Vision Lab Summary
 
-## Lab 5: Implementation of Feature Extraction Methods
+# Lab 5: Implementation of Feature Extraction Methods
 
 ### 1. **Overview of Feature Extraction**
    - **Purpose:** Extract essential information from images that is more informative and non-redundant, to facilitate subsequent learning and generalization steps.
@@ -21,7 +20,7 @@
    - **Developing SIFT-based Feature Matching System**
    - **Using LBP for Robust Texture Classification**
 
-## Lab 6: Implementation of Feature Matching Methods
+# Lab 6: Implementation of Feature Matching Methods
 
 ### 1. **Introduction to Feature Matching**
    - **Purpose:** Identify and match individual features between different images based on their descriptors, essential for motion tracking, image stitching, and stereo vision.
@@ -42,7 +41,7 @@
    - **Using RANSAC for Robust Estimation of Geometric Transformations**
    - **Performance Evaluation of Feature Matching under Different Conditions**
 
-## Lab 7: Implementation of Camera Calibration
+# Lab 7: Implementation of Camera Calibration
 
 ### 1. **Concept of Camera Calibration**
    - **Purpose:** Determine the camera's intrinsic (focal length, principal point, skew) and extrinsic (orientation and position) parameters, essential for accurate 3D scene interpretation from 2D images.

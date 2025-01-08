@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registration Form</title>
+</head>
+<body>
+
+    <h1>Conference Registration Form</h1>
+
+    <form>
+        
+        <div>
+            <h2>Participant Details</h2>
+            <label for="full-name">Full Name:</label>
+            <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+            
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" pattern="^\d{10}$" placeholder="Enter your 10-digit phone number" required>
+            
+            <label for="age">Age (18-60):</label>
+            <input type="number" id="age" name="age" min="18" max="60" required>
+        </div>
+
+        <div>
+            <h2>Event Preferences</h2>
+            <label for="events">Select up to two events:</label>
+            <select id="events" name="events[]" multiple required>
+                <option value="coding-contest">Coding Contest</option>
+                <option value="hackathon">Hackathon</option>
+                <option value="paper-presentation">Paper Presentation</option>
+                <option value="robotics-challenge">Robotics Challenge</option>
+                <option value="keynote-session">Keynote Session</option>
+            </select>
+            <div>Hold Ctrl (Windows) or Command (Mac) to select multiple options.</div>
+        </div>
+
+        <div>
+            <h2>Accommodation Details</h2>
+            <label>Accommodation Type:</label><br>
+            <input type="radio" id="hostel" name="accommodation" value="Hostel" required>
+            <label for="hostel">Hostel</label><br>
+            <input type="radio" id="hotel" name="accommodation" value="Hotel" required>
+            <label for="hotel">Hotel</label><br>
+            <input type="radio" id="none" name="accommodation" value="None" required>
+            <label for="none">None</label>
+        </div>
+
+        <div>
+            <h2>Dietary Preferences</h2>
+            <label>Dietary Preferences:</label><br>
+            <input type="checkbox" id="vegetarian" name="diet[]" value="Vegetarian">
+            <label for="vegetarian">Vegetarian</label><br>
+            <input type="checkbox" id="non-vegetarian" name="diet[]" value="Non-Vegetarian">
+            <label for="non-vegetarian">Non-Vegetarian</label><br>
+            <input type="checkbox" id="vegan" name="diet[]" value="Vegan">
+            <label for="vegan">Vegan</label><br>
+            <input type="checkbox" id="other" name="diet[]" value="Other">
+            <label for="other">Other (Specify below)</label><br>
+            <input type="text" id="other-diet" name="other-diet" placeholder="Specify your dietary preference" disabled>
+        </div>
+
+        <div>
+            <h2>Additional Info</h2>
+            <label for="student-id">Upload Documents (PDF only, max 5MB):</label>
+            <input type="file" id="student-id" name="student-id" accept=".pdf" required>
+            
+            <label for="comments">Comments/Requests (Optional, max 300 characters):</label>
+            <textarea id="comments" name="comments" rows="4" maxlength="300"></textarea>
+        </div>
+
+        <div>
+            <label>
+                <input type="checkbox" name="consent" required>
+                I agree to the <a href="#">terms and conditions</a>.
+            </label>
+        </div>
+
+        <div>
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </div>
+
+    </form>
+
+</body>
+</html>

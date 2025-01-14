@@ -1,0 +1,2 @@
+Compiling ---> mpicc example.c -o example.out
+Running  ----> mpirun -n 4 ./example.out

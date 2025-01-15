@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #343a40;
+      color: #f8f9fa;
+    }
+    .top-section {
+      background-color: #495057;
+      padding: 50px;
+      border-bottom: 2px solid #6c757d;
+    }
+    .bottom-section {
+      padding: 30px;
+    }
+    .item {
+      background-color: #495057;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    .input-group-text {
+      background-color: #6c757d;
+      color: #f8f9fa;
+    }
+    .form-control {
+      background-color: #6c757d;
+      color: #f8f9fa;
+      border: 1px solid #6c757d;
+    }
+    .badge {
+      color: #f8f9fa;
+    }
+    .btn-group .btn {
+      color: #f8f9fa;
+    }
+    .btn-success {
+      background-color: #28a745;
+      border-color: #28a745;
+    }
+    .btn-danger {
+      background-color: #dc3545;
+      border-color: #dc3545;
+    }
+    .btn-warning {
+      background-color: #ffc107;
+      border-color: #ffc107;
+    }
+    .btn-info {
+      background-color: #17a2b8;
+      border-color: #17a2b8;
+    }
+    .footer-name{
+      margin-left: 80vh;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-section">
+    <div class="container">
+      <h2 class="text-center mb-4">Top Section</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="input-group mb-3">
+            <span class="input-group-text">@</span>
+            <input type="text" class="form-control" placeholder="Username">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Email">
+            <span class="input-group-text">@example.com</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Notifications <span class="badge bg-primary">4</span></h5>
+        </div>
+        <div class="col-md-6 text-end">
+          <div class="btn-group">
+            <button type="button" class="btn btn-success">Save</button>
+            <button type="button" class="btn btn-danger">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-section">
+    <div class="container">
+      <h2 class="text-center mb-4">Bottom Section</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="item">
+            <h5>Item 1</h5>
+            <button type="button" class="btn btn-primary">Button 1</button>
+            <span class="badge bg-secondary">New</span>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="item">
+            <h5>Item 2</h5>
+            <button type="button" class="btn btn-warning">Button 2</button>
+            <span class="badge bg-danger">Out of Stock</span>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="item">
+            <h5>Item 3</h5>
+            <button type="button" class="btn btn-info">Button 3</button>
+            <span class="badge bg-success">In Stock</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class = "footer-name">
+    <p>&copy; 2025 Arhaan Girdhar</p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

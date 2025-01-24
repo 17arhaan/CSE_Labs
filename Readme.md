@@ -13,14 +13,19 @@ Each folder corresponds to a semester, with subfolders for individual courses or
 CSE_Labs/
 ├── IV Sem/
 │   └── Artficial Intelligence Lab/
-            ...
+│   └── Artficial Intelligence Lab/
+│   └── Artficial Intelligence Lab/
+.
 ├── V Sem/
 │   └── Machine Learning Lab/
-            ...
+│   └── Computer Vision Lab/
+│   └── Big Data Analytics Lab/
+.
 ├── VI Sem/
 │   └── Deep Learning Lab/
-            ...
-
+│   └── Web Programming Lab/
+│   └── Parallel Programming Lab/
+__
 ### Contents
 
 - **Semester-wise Folders**: Each semester folder contains lab assignments and answers for the courses covered.

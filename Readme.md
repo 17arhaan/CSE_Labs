@@ -12,11 +12,14 @@ Each folder corresponds to a semester, with subfolders for individual courses or
 ```
 CSE_Labs/
 ├── IV Sem/
+│   └── Artficial Intelligence Lab/
+            ...
 ├── V Sem/
 │   └── Machine Learning Lab/
-...
-└── VIII Sem /
-```
+            ...
+├── VI Sem/
+│   └── Deep Learning Lab/
+            ...
 
 ### Contents
 

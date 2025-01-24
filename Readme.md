@@ -25,6 +25,7 @@ CSE_Labs/
 │   └── Web Programming Lab/
 │   └── Parallel Programming Lab/
 __
+   ```
 ### Contents
 
 - **Semester-wise Folders**: Each semester folder contains lab assignments and answers for the courses covered.

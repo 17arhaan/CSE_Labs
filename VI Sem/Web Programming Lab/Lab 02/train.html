@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Booking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-image">
+        <div class="form-container">
+            <h2>Train Ticket Booking</h2>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="departure">Departure Station:</label>
+                    <input type="text" id="departure" name="departure" required placeholder="Enter departure station">
+                </div>
+
+                <div class="form-group">
+                    <label for="arrival">Arrival Station:</label>
+                    <input type="text" id="arrival" name="arrival" required placeholder="Enter arrival station">
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Travel Date:</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="passenger-name">Passenger Name:</label>
+                    <input type="text" id="passenger-name" name="passenger-name" required placeholder="Enter your name">
+                </div>
+
+                <div class="form-group">
+                    <label for="number-of-tickets">Number of Tickets:</label>
+                    <input type="number" id="number-of-tickets" name="number-of-tickets" min="1" max="10" required>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn-submit">Book Ticket</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

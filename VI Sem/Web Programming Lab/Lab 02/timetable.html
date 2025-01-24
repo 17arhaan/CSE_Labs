@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timetable</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      color: #343a40;
+    }
+    .carousel-item {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .table {
+      background-color: #ffffff;
+    }
+    .table th, .table td {
+      text-align: center;
+    }
+    .btn-group .btn {
+      margin: 5px;
+    }
+    .carousel-indicators li {
+      background-color: #b6d8fc;
+    }
+    .carousel-inner {
+      text-align: center;
+    }
+    .btn-info {
+      background-color: #bbfdff;
+      border-color: #000000;
+    }
+    .btn-info:hover {
+      background-color: #2c5986;
+      border-color: #ffffff;
+    }
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .container {
+      max-width: 1000px;
+    }
+    .footer-name{
+      margin-left: 80vh;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container mt-4">
+    <h2 class="text-center mb-4">My Timetable</h2>
+
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <!-- Monday -->
+        <div class="carousel-item active">
+          <h4 class="text-center">Monday</h4>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Subject</th>
+                <th>Instructor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>8:00 AM - 9:00 AM</td>
+                <td>Mathematics (Calculus)</td>
+                <td>Dr. Smith</td>
+              </tr>
+              <tr>
+                <td>9:00 AM - 10:00 AM</td>
+                <td>Engineering Physics</td>
+                <td>Dr. Johnson</td>
+              </tr>
+              <tr>
+                <td>10:00 AM - 11:00 AM</td>
+                <td>Electrical Circuits</td>
+                <td>Prof. Brown</td>
+              </tr>
+              <tr>
+                <td>11:00 AM - 12:00 PM</td>
+                <td>Engineering Drawing</td>
+                <td>Dr. Taylor</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Tuesday -->
+        <div class="carousel-item">
+          <h4 class="text-center">Tuesday</h4>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Subject</th>
+                <th>Instructor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>8:00 AM - 9:00 AM</td>
+                <td>Digital Logic Design</td>
+                <td>Prof. Green</td>
+              </tr>
+              <tr>
+                <td>9:00 AM - 10:00 AM</td>
+                <td>Fluid Mechanics</td>
+                <td>Dr. White</td>
+              </tr>
+              <tr>
+                <td>10:00 AM - 11:00 AM</td>
+                <td>Thermodynamics</td>
+                <td>Ms. Black</td>
+              </tr>
+              <tr>
+                <td>11:00 AM - 12:00 PM</td>
+                <td>Computer Programming</td>
+                <td>Dr. Blue</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Wednesday -->
+        <div class="carousel-item">
+          <h4 class="text-center">Wednesday</h4>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Subject</th>
+                <th>Instructor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>8:00 AM - 9:00 AM</td>
+                <td>Mathematics (Linear Algebra)</td>
+                <td>Dr. Gray</td>
+              </tr>
+              <tr>
+                <td>9:00 AM - 10:00 AM</td>
+                <td>Mechanics of Solids</td>
+                <td>Ms. White</td>
+              </tr>
+              <tr>
+                <td>10:00 AM - 11:00 AM</td>
+                <td>Control Systems</td>
+                <td>Dr. Smith</td>
+              </tr>
+              <tr>
+                <td>11:00 AM - 12:00 PM</td>
+                <td>Circuit Analysis</td>
+                <td>Dr. Johnson</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Thursday -->
+        <div class="carousel-item">
+          <h4 class="text-center">Thursday</h4>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Subject</th>
+                <th>Instructor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>8:00 AM - 9:00 AM</td>
+                <td>Material Science</td>
+                <td>Prof. Red</td>
+              </tr>
+              <tr>
+                <td>9:00 AM - 10:00 AM</td>
+                <td>Fluid Mechanics Lab</td>
+                <td>Dr. White</td>
+              </tr>
+              <tr>
+                <td>10:00 AM - 11:00 AM</td>
+                <td>Mechanical Drawing</td>
+                <td>Ms. Black</td>
+              </tr>
+              <tr>
+                <td>11:00 AM - 12:00 PM</td>
+                <td>Programming Lab</td>
+                <td>Dr. Blue</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Friday -->
+        <div class="carousel-item">
+          <h4 class="text-center">Friday</h4>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Subject</th>
+                <th>Instructor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>8:00 AM - 9:00 AM</td>
+                <td>Mathematics (Probability)</td>
+                <td>Dr. White</td>
+              </tr>
+              <tr>
+                <td>9:00 AM - 10:00 AM</td>
+                <td>Fluid Mechanics</td>
+                <td>Dr. Green</td>
+              </tr>
+              <tr>
+                <td>10:00 AM - 11:00 AM</td>
+                <td>Dynamics</td>
+                <td>Prof. Red</td>
+              </tr>
+              <tr>
+                <td>11:00 AM - 12:00 PM</td>
+                <td>Control Systems Lab</td>
+                <td>Dr. Smith</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Saturday -->
+        <div class="carousel-item">
+          <h4 class="text-center">Saturday</h4>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Subject</th>
+                <th>Instructor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>8:00 AM - 9:00 AM</td>
+                <td>Signals & Systems</td>
+                <td>Dr. Brown</td>
+              </tr>
+              <tr>
+                <td>9:00 AM - 10:00 AM</td>
+                <td>Electronic Circuits</td>
+                <td>Ms. Black</td>
+              </tr>
+              <tr>
+                <td>10:00 AM - 11:00 AM</td>
+                <td>Strength of Materials</td>
+                <td>Prof. Green</td>
+              </tr>
+              <tr>
+                <td>11:00 AM - 12:00 PM</td>
+                <td>Computational Methods</td>
+                <td>Dr. Red</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="3"></button>
+        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="4"></button>
+        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="5"></button>
+      </div>
+    </div>
+
+    <div class="btn-group mt-3" role="group">
+      <button type="button" class="btn btn-info" data-bs-target="#carouselExample" data-bs-slide-to="0">Monday</button>
+      <button type="button" class="btn btn-info" data-bs-target="#carouselExample" data-bs-slide-to="1">Tuesday</button>
+      <button type="button" class="btn btn-info" data-bs-target="#carouselExample" data-bs-slide-to="2">Wednesday</button>
+      <button type="button" class="btn btn-info" data-bs-target="#carouselExample" data-bs-slide-to="3">Thursday</button>
+      <button type="button" class="btn btn-info" data-bs-target="#carouselExample" data-bs-slide-to="4">Friday</button>
+      <button type="button" class="btn btn-info" data-bs-target="#carouselExample" data-bs-slide-to="5">Saturday</button>
+    </div>
+  </div>
+<footer class = "footer-name">
+    <p>&copy; 2025 Arhaan Girdhar</p>
+</footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

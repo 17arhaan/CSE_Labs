@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            text-align: center;
+            padding: 20px;
+        }
+        .form-container {
+            margin: 0 auto;
+            width: 300px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="number"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 80%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1.2rem;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Grade Calculator</h1>
+        <input type="number" id="subject1" placeholder="Enter Marks for Subject 1" required>
+        <input type="number" id="subject2" placeholder="Enter Marks for Subject 2" required>
+        <input type="number" id="subject3" placeholder="Enter Marks for Subject 3" required>
+        <input type="number" id="subject4" placeholder="Enter Marks for Subject 4" required>
+        <button onclick="calculateGrade()">Calculate Grade</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateGrade() {
+            const subject1 = parseFloat(document.getElementById('subject1').value);
+            const subject2 = parseFloat(document.getElementById('subject2').value);
+            const subject3 = parseFloat(document.getElementById('subject3').value);
+            const subject4 = parseFloat(document.getElementById('subject4').value);
+            const resultDiv = document.getElementById('result');
+
+            if (isNaN(subject1) || isNaN(subject2) || isNaN(subject3) || isNaN(subject4)) {
+                resultDiv.innerHTML = "Please enter valid marks for all subjects.";
+                return;
+            }
+
+            const average = (subject1 + subject2 + subject3 + subject4) / 4;
+            let grade;
+
+            if (average > 90) {
+                grade = "A";
+            } else if (average > 80) {
+                grade = "B";
+            } else if (average > 70) {
+                grade = "C";
+            } else if (average > 60) {
+                grade = "D";
+            } else {
+                grade = "F";
+            }
+
+            resultDiv.innerHTML = `Your average is ${average.toFixed(2)}. You received grade: ${grade}`;
+        }
+    </script>
+
+</body>
+</html>

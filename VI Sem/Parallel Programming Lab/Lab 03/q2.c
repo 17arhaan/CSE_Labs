@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <mpi.h>
+#include "mpi.h"
 #include <stdlib.h>
 int main(int argc, char **argv){
     int rank, size, *ori, *store, m;

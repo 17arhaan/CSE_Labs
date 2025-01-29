@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Card Designer</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #ecbd97;
+    }
+    .container {
+        display: flex;
+        width: 80%;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .options {
+        width: 40%;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .options h3 {
+        margin-bottom: 15px;
+    }
+    .options label, .options input, .options select {
+        margin-bottom: 10px;
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+    .card {
+        width: 350px;
+        height: 450px;
+        padding: 20px;
+        text-align: center;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        transition: all 0.5s ease;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .image {
+        width: 150px;
+        margin-top: 20px;
+        border: 1px solid #000000; 
+        border-radius: 10px;
+    }
+    textarea {
+        resize: none;
+    }
+    .toggle-button {
+        background-color: #964f7b;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        width: 100%;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="options">
+            <h3>Customize Card</h3>
+
+            <label>Choose a background color:</label>
+            <select id="bgColor">
+                <option value="yellow">Yellow</option>
+                <option value="lightblue">Light Blue</option>
+                <option value="lightpink">Light Pink</option>
+                <option value="lightgreen">Light Green</option>
+                <option value="lavender">Lavender</option>
+            </select><br><br>
+
+            <label>Choose a font:</label>
+            <select id="fontType">
+                <option value="Verdana">Verdana</option>
+                <option value="Arial">Arial</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Comic Sans MS">Comic Sans MS</option>
+            </select><br><br>
+
+            <label>Specify font size:</label>
+            <input type="number" id="fontSize" value="25"><br><br>
+
+            <label>Choose a border style:</label><br>
+            <input type="radio" name="border" value="none" checked> None
+            <input type="radio" name="border" value="double"> Double
+            <input type="radio" name="border" value="solid"> Solid
+            <br><br>
+
+            <button id="toggleImage" class="toggle-button">Show Cake !!</button><br><br>
+
+            <label>Enter greeting text:</label><br>
+            <textarea id="greetingText" rows="2">Happy Birthday, and many more</textarea><br><br>
+
+            <button id="updateCard">Update</button>
+        </div>
+
+        <div class="card" id="birthdayCard" style="background-color: lightcoral; font-family: Verdana; font-size: 25px; border: none;">
+            <p id="message">Happy Birthday, and many more</p>
+            <img id="cakeImage" class="image" src="cake.jpeg" alt="Cake" style="display: none;">
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $("#updateCard").click(function(){
+                $("#birthdayCard").css("background-color", $("#bgColor").val());
+                $("#birthdayCard").css("font-family", $("#fontType").val());
+                $("#birthdayCard").css("font-size", $("#fontSize").val() + "px");
+                $("#message").text($("#greetingText").val());
+
+                let borderStyle = $("input[name='border']:checked").val();
+                $("#birthdayCard").css("border", borderStyle === "none" ? "none" : `4px ${borderStyle} black`);
+
+                $("#birthdayCard").animate({
+                    opacity: 0.5
+                }, 200, function(){
+                    $(this).animate({
+                        opacity: 1
+                    }, 200);
+                });
+            });
+
+            $("#toggleImage").click(function(){
+                $("#cakeImage").toggle();
+            });
+        });
+    </script>
+</body>
+</html>

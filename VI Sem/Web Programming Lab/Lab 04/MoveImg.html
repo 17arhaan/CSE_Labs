@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table | Image</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 300px;
+            border: 1px solid #000;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        img {
+            width: 100px;
+            height: auto;
+            margin-top: 20px;
+        }
+        #container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        #moveableContent {
+            display: flex;
+            justify-content: flex-start;
+            position: relative; /* Add this line */
+        }
+    </style>
+</head>
+<body>
+
+<h2>Move it Move it</h2>
+
+<div id="container">
+    <div id="moveableContent">
+        <table>
+            <thead>
+                <tr>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <img src="placeholder.jpg"Placeholder Image">
+    </div>
+</div>
+
+<button id="moveButton">Move Right to Left</button>
+
+<script>
+    $(document).ready(function() {
+        $('#moveButton').click(function() {
+            $('#moveableContent').animate({
+                left: "-100%" 
+            }, 2000, function() {
+                // Reset position to right after animation completes
+                $('#moveableContent').css('left', '100%');
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

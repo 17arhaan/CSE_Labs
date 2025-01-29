@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1a1a1a;
+            margin: 0;
+        }
+
+        .calculator {
+            background-color: #333;
+            padding: 12px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            color: #fff;
+        }
+
+        .calculator input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            text-align: right;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            background-color: #222;
+            color: #fff;
+        }
+
+        .calculator button {
+            width: 48%;
+            padding: 15px;
+            margin: 5px 1%;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #444;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .calculator button:active {
+            background-color: #555;
+        }
+
+        .calculator button.operator {
+            background-color: #ff9800;
+        }
+
+        .calculator button.operator:active {
+            background-color: #f57c00;
+        }
+
+        .calculator button.clear {
+            background-color: #f44336;
+        }
+
+        .calculator button.clear:active {
+            background-color: #e53935;
+        }
+
+        .calculator button.equal {
+            background-color: #4CAF50;
+        }
+
+        .calculator button.equal:active {
+            background-color: #45a049;
+        }
+
+        .calculator .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 02px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <input type="text" id="display" disabled>
+    
+    <div class="row">
+        <button onclick="appendNumber(7)">7</button>
+        <button onclick="appendNumber(8)">8</button>
+        <button onclick="appendNumber(9)">9</button>
+        <button onclick="setOperator('+')" class="operator">+</button>
+    </div>
+    
+    <div class="row">
+        <button onclick="appendNumber(4)">4</button>
+        <button onclick="appendNumber(5)">5</button>
+        <button onclick="appendNumber(6)">6</button>
+        <button onclick="setOperator('-')" class="operator">-</button>
+    </div>
+
+    <div class="row">
+        <button onclick="appendNumber(1)">1</button>
+        <button onclick="appendNumber(2)">2</button>
+        <button onclick="appendNumber(3)">3</button>
+        <button onclick="setOperator('*')" class="operator">*</button>
+    </div>
+
+    <div class="row">
+        <button onclick="appendNumber(0)">0</button>
+        <button onclick="clearDisplay()" class="clear">C</button>
+        <button onclick="calculateResult()" class="equal">=</button>
+        <button onclick="setOperator('/')" class="operator">/</button>
+    </div>
+</div>
+
+<script>
+    let currentInput = "";
+    let previousInput = "";
+    let operator = null;
+
+    function appendNumber(number) {
+        currentInput += number;
+        document.getElementById('display').value = currentInput;
+    }
+
+    function clearDisplay() {
+        currentInput = "";
+        previousInput = "";
+        operator = null;
+        document.getElementById('display').value = "";
+    }
+
+    function setOperator(op) {
+        if (currentInput === "") return;
+        if (previousInput !== "") {
+            calculateResult();
+        }
+        operator = op;
+        previousInput = currentInput;
+        currentInput = "";
+        document.getElementById('display').value = previousInput + " " + operator;
+    }
+
+    function calculateResult() {
+        let result;
+        const prev = parseFloat(previousInput);
+        const current = parseFloat(currentInput);
+
+        if (isNaN(prev) || isNaN(current)) return;
+
+        switch (operator) {
+            case "+":
+                result = prev + current;
+                break;
+            case "-":
+                result = prev - current;
+                break;
+            case "*":
+                result = prev * current;
+                break;
+            case "/":
+                if (current === 0) {
+                    alert("Cannot divide by zero");
+                    return;
+                }
+                result = prev / current;
+                break;
+            default:
+                return;
+        }
+
+        document.getElementById('display').value = result;
+        previousInput = result;
+        currentInput = "";
+        operator = null;
+    }
+</script>
+
+</body>
+</html>

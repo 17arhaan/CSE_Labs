@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Bill</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        select, input[type="number"], button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Produce Bill</h2>
+
+    <label for="brand">Select Brand</label>
+    <select id="brand">
+        <option value="HP">HP</option>
+        <option value="Nokia">Nokia</option>
+        <option value="Samsung">Samsung</option>
+        <option value="Motorola">Motorola</option>
+        <option value="Apple">Apple</option>
+    </select>
+
+    <label>Product Type</label>
+    <input type="checkbox" id="mobile" name="productType" value="Mobile">
+    <label for="mobile">Mobile</label>
+    <input type="checkbox" id="laptop" name="productType" value="Laptop">
+    <label for="laptop">Laptop</label>
+
+    <label for="quantity">Enter Quantity</label>
+    <input type="number" id="quantity" name="quantity" min="1" required>
+
+    <button onclick="produceBill()">Produce Bill</button>
+</div>
+
+<script>
+    function produceBill() {
+        const brand = document.getElementById("brand").value;
+        const isMobileChecked = document.getElementById("mobile").checked;
+        const isLaptopChecked = document.getElementById("laptop").checked;
+        const quantity = document.getElementById("quantity").value;
+
+        let productType = "";
+        if (isMobileChecked) productType += "Mobile ";
+        if (isLaptopChecked) productType += "Laptop ";
+
+        if (!productType) {
+            alert("Please select at least one product type.");
+            return;
+        }
+
+        const priceList = {
+            "HP": 500,
+            "Nokia": 300,
+            "Samsung": 700,
+            "Motorola": 400,
+            "Apple": 1000
+        };
+
+        let price = priceList[brand];
+        if (!price) {
+            alert("Invalid brand selected.");
+            return;
+        }
+
+        const totalAmount = price * quantity;
+        alert(`Brand: ${brand}\nProduct Type: ${productType}\nQuantity: ${quantity}\nTotal Amount: $${totalAmount}`);
+    }
+</script>
+
+</body>
+</html>

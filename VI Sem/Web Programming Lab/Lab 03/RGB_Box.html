@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Box Color</title>
+    <style>
+        #colorBox {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Select a color:</h2>
+    <input type="radio" id="red" name="color" value="red">
+    <label for="red">Red</label>
+    <input type="radio" id="green" name="color" value="green">
+    <label for="green">Green</label>
+    <input type="radio" id="blue" name="color" value="blue">
+    <label for="blue">Blue</label>
+
+    <div id="colorBox"></div>
+
+    <script>
+        const redRadio = document.getElementById('red');
+        const greenRadio = document.getElementById('green');
+        const blueRadio = document.getElementById('blue');
+        const colorBox = document.getElementById('colorBox');
+
+        function changeColor() {
+            if (redRadio.checked) {
+                colorBox.style.backgroundColor = 'red';
+            } else if (greenRadio.checked) {
+                colorBox.style.backgroundColor = 'green';
+            } else if (blueRadio.checked) {
+                colorBox.style.backgroundColor = 'blue';
+            }
+        }
+
+        redRadio.addEventListener('change', changeColor);
+        greenRadio.addEventListener('change', changeColor);
+        blueRadio.addEventListener('change', changeColor);
+    </script>
+</body>
+</html>

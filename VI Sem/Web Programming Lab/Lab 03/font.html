@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Size Animation</title>
+</head>
+<body>
+    <div id="text" style="font-size: 10pt; color: red;">FONT+++</div>
+
+    <script>
+        let fontSize = 10;
+        let textElement = document.getElementById('text');
+        let increasing = true;
+
+        function changeFontSize() {
+            if (increasing) {
+                fontSize += 2;
+                textElement.style.fontSize = fontSize + 'pt';
+                textElement.style.color = 'red';
+                if (fontSize >= 40) {
+                    textElement.innerText = "FONT---";
+                    textElement.style.color = 'blue';
+                    increasing = false;
+                }
+            } else {
+                fontSize -= 2;
+                textElement.style.fontSize = fontSize + 'pt';
+                if (fontSize <= 5) {
+                    fontSize = 5;
+                    clearInterval(interval);
+                }
+            }
+        }
+
+        let interval = setInterval(changeFontSize, 200);
+    </script>
+</body>
+</html>

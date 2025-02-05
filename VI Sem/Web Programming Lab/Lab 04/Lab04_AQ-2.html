@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sliding Text Over Image</title>
+    <style>
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .sliding-text {
+            position: absolute;
+            bottom: 50px;
+            white-space: nowrap;
+            color: white;
+            font-size: 2em;
+            font-family: Arial, sans-serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: slide 15s linear infinite;
+        }
+
+        @keyframes slide {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="image" src="/api/placeholder/800/400" alt="Background Image">
+        <div class="sliding-text">
+            Welcome to our website! This is a sliding text animation.
+        </div>
+    </div>
+</body>
+</html>

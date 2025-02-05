@@ -1,4 +1,3 @@
-Here are the **detailed answers** to all your questions from **Lab 1 to Lab 4** covering **HTML5, CSS, Bootstrap, JavaScript, and jQuery**.
 
 ---
 
@@ -217,5 +216,3 @@ $("#box").animate({left: '+=200px'}, 500);
 ```
 
 ---
-
-✅ **These are concise answers to all your questions**. Let me know if you need **detailed explanations** for any of them! 🚀🔥

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Promotion Eligibility Check</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label, select, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .result {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Check Promotion Eligibility</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            {{ form.employee_id.label_tag }}
+            {{ form.employee_id }}
+        </div>
+        <div>
+            {{ form.date_of_joining.label_tag }}
+            {{ form.date_of_joining }}
+        </div>
+        <button type="submit">Am I Eligible for Promotion</button>
+    </form>
+    {% if result %}
+        <div class="result">Eligibility: {{ result }}</div>
+    {% endif %}
+</body>
+</html>

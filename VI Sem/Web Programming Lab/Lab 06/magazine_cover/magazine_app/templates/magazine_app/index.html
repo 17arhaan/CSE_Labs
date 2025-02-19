@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Magazine Cover Generator</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container py-4">
+    <div class="row">
+      <div class="col-md-6">
+        <form id="coverForm" method="post" enctype="multipart/form-data" class="card p-4 shadow-sm">
+          <p>
+            <label for="image">Select Cover Image</label><br>
+            <input type="file" name="image" id="image">
+          </p>
+          <p>
+            <label for="background_color">Background Color</label><br>
+            <input type="color" name="background_color" id="background_color" value="#ffffff">
+          </p>
+          <p>
+            <label for="font_color">Font Color</label><br>
+            <input type="color" name="font_color" id="font_color" value="#000000">
+          </p>
+          <p>
+            <label for="font_size">Font Size (px)</label><br>
+            <input type="number" name="font_size" id="font_size" min="12" max="72" value="24">
+          </p>
+          <p>
+            <label for="font_family">Font Family</label><br>
+            <select name="font_family" id="font_family">
+              <option value="Arial">Arial</option>
+              <option value="Times New Roman">Times New Roman</option>
+              <option value="Helvetica">Helvetica</option>
+            </select>
+          </p>
+          <p>
+            <label for="title">Magazine Title</label><br>
+            <input type="text" name="title" id="title" placeholder="Enter magazine title">
+          </p>
+          <p>
+            <label for="tagline">Tagline</label><br>
+            <input type="text" name="tagline" id="tagline" placeholder="Enter tagline">
+          </p>
+          <button type="submit" class="btn btn-primary w-100">Generate Cover</button>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <div class="card shadow-sm" id="coverPreview" style="background-color: #ffffff;">
+          <img src="images/default.jpg" alt="Default Cover Image" class="img-fluid" id="coverImage">
+          <div class="card-body text-center">
+            <h2 id="coverTitle" style="font-size: 24px; color: #000000; font-family: Arial;">Magazine Title</h2>
+            <p id="coverTagline" style="font-size: 19px; color: #000000;">Tagline goes here</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const form = document.getElementById('coverForm');
+    const coverPreview = document.getElementById('coverPreview');
+    const coverImage = document.getElementById('coverImage');
+    const coverTitle = document.getElementById('coverTitle');
+    const coverTagline = document.getElementById('coverTagline');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const bgColor = document.getElementById('background_color').value;
+      const fontColor = document.getElementById('font_color').value;
+      const fontSize = document.getElementById('font_size').value;
+      const fontFamily = document.getElementById('font_family').value;
+      const title = document.getElementById('title').value;
+      const tagline = document.getElementById('tagline').value;
+      
+      coverPreview.style.backgroundColor = bgColor;
+      coverTitle.style.fontSize = fontSize + 'px';
+      coverTitle.style.color = fontColor;
+      coverTitle.style.fontFamily = fontFamily;
+      coverTitle.textContent = title;
+      coverTagline.style.fontSize = (fontSize * 0.8) + 'px';
+      coverTagline.style.color = fontColor;
+      coverTagline.textContent = tagline;
+
+      const imageInput = document.getElementById('image');
+      if (imageInput.files && imageInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          coverImage.src = e.target.result;
+        }
+        reader.readAsDataURL(imageInput.files[0]);
+      } else {
+        coverImage.src = "images/default.jpg";
+      }
+    });
+  </script>
+</body>
+</html>

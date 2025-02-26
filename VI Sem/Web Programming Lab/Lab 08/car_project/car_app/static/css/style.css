@@ -1,0 +1,30 @@
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+  
+  .card {
+    border: none;
+  }
+  
+  .card-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #333;
+  }
+  
+  .btn-primary {
+    background-color: #1e88e5;
+    border-color: #1e88e5;
+  }
+  
+  .btn-outline-light {
+    border-color: #e0e0e0;
+    color: #e0e0e0;
+  }
+  
+  .form-control, .form-select {
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    color: #e0e0e0;
+  }
+  

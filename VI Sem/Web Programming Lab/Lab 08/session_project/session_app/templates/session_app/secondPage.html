@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Second Page</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <h1>Received Information</h1>
+  <p id="info">
+    <strong>Name:</strong> {{ name }}<br>
+    <strong>Roll:</strong> {{ roll }}<br>
+    <strong>Subject:</strong> {{ subject }}
+  </p>
+  <form action="{% url 'first_page' %}" method="get">
+    <button type="submit">Back to First Page</button>
+  </form>
+</body>
+</html>

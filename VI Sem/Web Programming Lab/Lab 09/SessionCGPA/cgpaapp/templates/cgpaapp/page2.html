@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Page 2</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f5f5f5;
+    }
+    .box {
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .box h2 {
+      margin-bottom: 15px;
+    }
+    .box p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Welcome {{ name }}</h2>
+    <p>Your CGPA is = {{ cgpa }}</p>
+  </div>
+</body>
+</html>

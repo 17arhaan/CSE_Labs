@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Vote</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <table border="0" cellpadding="5" cellspacing="5">
+    <tr>
+      <td>How is the book ASP.NET with c# by Vipul Prakashan?</td>
+    </tr>
+    <tr>
+      <td>
+        <form method="post">
+          {% csrf_token %}
+          <input type="radio" name="vote" value="good" id="good">
+          <label for="good">Good</label>
+          [{{ percentages.good }}%]
+          <br>
+          <input type="radio" name="vote" value="satisfactory" id="satisfactory">
+          <label for="satisfactory">Satisfactory</label>
+          [{{ percentages.satisfactory }}%]
+          <br>
+          <input type="radio" name="vote" value="bad" id="bad">
+          <label for="bad">Bad</label>
+          [{{ percentages.bad }}%]
+          <br><br>
+          <input type="submit" value="Vote">
+        </form>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

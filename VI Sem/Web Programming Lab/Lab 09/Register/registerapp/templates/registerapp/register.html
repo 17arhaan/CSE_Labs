@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register Page</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.0/css/bootstrap.min.css">
+  <style>
+    html, body { height: 100%; }
+    .my-container { min-height: 100%; display: flex; align-items: center; justify-content: center; }
+    .card { width: 100%; max-width: 500px; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); border-radius: 10px; }
+  </style>
+</head>
+<body>
+  <div class="container my-container">
+    <div class="card">
+      <h2 class="text-center mb-4">Register</h2>
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          {{ form.username.label_tag }}
+          {{ form.username }}
+        </div>
+        <div class="form-group">
+          {{ form.password.label_tag }}
+          {{ form.password }}
+        </div>
+        <div class="form-group">
+          {{ form.email.label_tag }}
+          {{ form.email }}
+        </div>
+        <div class="form-group">
+          {{ form.contact.label_tag }}
+          {{ form.contact }}
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Website Directory</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f5f5f5; }
+    .container {
+      width: 80%; margin: 20px auto; background: #fff; padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 { text-align: center; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    table, th, td { border: 1px solid #ccc; }
+    th, td { padding: 8px; text-align: left; }
+    a { margin-right: 15px; text-decoration: none; color: #007BFF; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Website Directory</h2>
+    <div style="text-align: center; margin-bottom: 20px;">
+      <a href="{% url 'add_category' %}">Add Category</a>
+      <a href="{% url 'add_page' %}">Add Page</a>
+    </div>
+    <h3>Categories</h3>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Visits</th>
+        <th>Likes</th>
+      </tr>
+      {% for category in categories %}
+      <tr>
+        <td>{{ category.name }}</td>
+        <td>{{ category.visits }}</td>
+        <td>{{ category.likes }}</td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="3" style="text-align:center;">No categories added yet.</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <h3>Pages</h3>
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>URL</th>
+        <th>Views</th>
+        <th>Category</th>
+      </tr>
+      {% for page in pages %}
+      <tr>
+        <td>{{ page.title }}</td>
+        <td><a href="{{ page.url }}" target="_blank">{{ page.url }}</a></td>
+        <td>{{ page.views }}</td>
+        <td>{{ page.category.name }}</td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="4" style="text-align:center;">No pages added yet.</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Add Category</title>
+  <style>
+    html, body {
+      margin: 0; padding: 0; height: 100%;
+      display: flex; justify-content: center; align-items: center;
+      background: #f5f5f5;
+    }
+    .box {
+      border: 2px solid #ccc; border-radius: 6px; background: #fff;
+      padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Add Category</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Add Category">
+    </form>
+    <a href="/">Back to Directory</a>
+  </div>
+</body>
+</html>

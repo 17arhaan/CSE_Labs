@@ -1,0 +1,176 @@
+--FNN
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from torchvision import datasets, transforms
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+import numpy as np
+import matplotlib.pyplot as plt
+transform = transforms.Compose([
+    transforms.ToTensor(),
+    transforms.Normalize((0.5,), (0.5,))
+])
+train_dataset = datasets.MNIST(root='./data', train=True, transform=transform, download=True)
+test_dataset = datasets.MNIST(root='./data', train=False, transform=transform, download=True)
+train_loader = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=32, shuffle=True)
+test_loader = torch.utils.data.DataLoader(dataset=test_dataset, batch_size=32, shuffle=False)
+class FFNN(nn.Module):
+    def __init__(self):
+        super(FFNN, self).__init__()
+        self.flatten = nn.Flatten()
+        self.fc1 = nn.Linear(28*28, 128)
+        self.fc2 = nn.Linear(128, 64)
+        self.fc3 = nn.Linear(64, 10)
+    def forward(self, x):
+        x = self.flatten(x)
+        x = torch.relu(self.fc1(x))
+        x = torch.relu(self.fc2(x))
+        x = torch.softmax(self.fc3(x), dim=1)
+        return x
+model = FFNN()
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+num_epochs = 5
+for epoch in range(num_epochs):
+    model.train()
+    for images, labels in train_loader:
+        optimizer.zero_grad()
+        outputs = model(images)
+        loss = criterion(outputs, labels)
+        loss.backward()
+        optimizer.step()
+    print(f"Epoch [{epoch+1}/{num_epochs}], Loss: {loss.item():.4f}")
+model.eval()
+y_true = []
+y_pred = []
+with torch.no_grad():
+    for images, labels in test_loader:
+        outputs = model(images)
+        _, predicted = torch.max(outputs, 1)
+        y_true.extend(labels.numpy())
+        y_pred.extend(predicted.numpy())
+accuracy = np.mean(np.array(y_true) == np.array(y_pred))
+print(f"Test Accuracy: {accuracy:.2f}")
+conf_matrix = confusion_matrix(y_true, y_pred)
+ConfusionMatrixDisplay(conf_matrix, display_labels=np.arange(10)).plot(cmap='viridis')
+plt.title("Confusion Matrix")
+plt.show()
+trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+print(f"Total Trainable Parameters: {trainable_params}")
+
+-CNN
+
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from torchvision import datasets, transforms
+from torch.utils.data import DataLoader
+from sklearn.metrics import accuracy_score
+import os
+
+class CheckpointHandler:
+    def __init__(self, best_valid_loss=float('inf')):
+        self.best_valid_loss = best_valid_loss
+    
+    def save_best_model(self, state, filename):
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
+        if state['loss'] < self.best_valid_loss:
+            self.best_valid_loss = state['loss']
+            torch.save(state, filename)
+            print('Checkpoint file updated')
+
+class CNN(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Conv2d(1, 32, kernel_size=3),
+            nn.ReLU(),
+            nn.MaxPool2d((2, 2), stride=2),
+            nn.Conv2d(32, 64, kernel_size=3),
+            nn.ReLU(),
+            nn.MaxPool2d((2, 2), stride=2),
+            nn.Conv2d(64, 32, kernel_size=3),
+            nn.ReLU(),
+            nn.MaxPool2d((2, 2), stride=2)
+        )
+        self.classify_head = nn.Sequential(
+            nn.Flatten(),
+            nn.Linear(32, 20, bias=True),
+            nn.Linear(20, 10, bias=True)
+        )
+    
+    def forward(self, x):
+        return self.classify_head(self.net(x))
+
+model = CNN().to('cuda')
+optimizer = optim.SGD(model.parameters(), lr=0.001)
+criterion = nn.CrossEntropyLoss()
+checkpoint_handler = CheckpointHandler()
+
+transforms = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5,), (0.5,))])
+train = datasets.MNIST('.', train=True, download=True, transform=transforms)
+test = datasets.MNIST('.', download=True, train=False, transform=transforms)
+train_loader = DataLoader(train, batch_size=64, shuffle=True)
+test_loader = DataLoader(test, batch_size=64)
+
+for epoch in range(10):
+    model.train()
+    running_loss = 0
+    for input, target in train_loader:
+        input, target = input.to('cuda'), target.to('cuda')
+        optimizer.zero_grad()
+        output = model(input)
+        loss = criterion(output, target)
+        loss.backward()
+        optimizer.step()
+        running_loss += loss.item()
+    print(f'Epoch - {epoch}, loss = {running_loss}')
+    
+    state = {
+        'epoch': epoch,
+        'model_state_dict': model.state_dict(),
+        'optimizer_state_dict': optimizer.state_dict(),
+        'loss': running_loss
+    }
+    checkpoint_handler.save_best_model(state, './q3_checkpoints/checkpoint_best.pth')
+
+model = CNN()
+checkpoint = torch.load('./q3_checkpoints/checkpoint_best.pth')
+model.load_state_dict(checkpoint['model_state_dict'])
+optimizer = torch.optim.SGD(model.parameters(), lr=0.001)
+optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+criterion = nn.CrossEntropyLoss()
+
+model.to('cuda')
+for epoch in range(10):
+    model.train()
+    running_loss = 0
+    for input, target in train_loader:
+        input, target = input.to('cuda'), target.to('cuda')
+        optimizer.zero_grad()
+        output = model(input)
+        loss = criterion(output, target)
+        loss.backward()
+        optimizer.step()
+        running_loss += loss.item()
+    print(f'Epoch - {epoch}, loss = {running_loss}')
+    
+    state = {
+        'epoch': epoch,
+        'model_state_dict': model.state_dict(),
+        'optimizer_state_dict': optimizer.state_dict(),
+        'loss': running_loss
+    }
+    checkpoint_handler.save_best_model(state, './q3_checkpoints/checkpoint_best.pth')
+
+all_preds, all_target = [], []
+model.eval()
+with torch.no_grad():
+    for input, target in test_loader:
+        input, target = input.to('cuda'), target.to('cuda')
+        output = model(input)
+        _, index = torch.max(output, dim=1)
+        all_preds.extend(index.to('cpu').numpy())
+        all_target.extend(target.to('cpu').numpy())
+
+print(f'Accuracy: {accuracy_score(all_preds, all_target) * 100:.2f}%')
